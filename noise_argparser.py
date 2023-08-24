@@ -12,6 +12,7 @@ from noise_layers.jpeg import Jpeg
 from noise_layers.salt_and_pepper import Salt_and_Pepper
 from noise_layers.Gaussian_noise import Gaussian_Noise
 from noise_layers.Median_filter import Median_filter
+# adjust hue
 from noise_layers.Adjust_hue import Adjust_hue
 from noise_layers.Adjust_contrast import Adjust_contrast
 from noise_layers.grid_crop import grid_crop

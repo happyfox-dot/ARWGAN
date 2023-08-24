@@ -35,7 +35,7 @@ def yuv_psnr(img):
 
 
 def main():
-    os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
     if torch.cuda.is_available():
         device = torch.device('cuda')
     else:
