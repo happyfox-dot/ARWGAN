@@ -227,12 +227,20 @@ def jpeg_compress_decompress(image, downsample_c=False, rounding=diff_round, fac
 class Jpeg(nn.Module):
     def __init__(self,factor):
         super(Jpeg, self).__init__()
-        self.factor=factor
+        print()
+        self.factor=float(factor)
+        
         self.device=torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
     def forward(self, noise_and_cover):
+        # operate encoded image 
         encoded_image=noise_and_cover[0]
         encoded_image=encoded_image.cpu()
-        jpeg_image=jpeg_compress_decompress(encoded_image,factor=quality_to_factor(50))
+        # 
+        # print(type(self.factor))
+        # print(self.factor)
+
+        # quality_to_factor
+        jpeg_image=jpeg_compress_decompress(encoded_image,factor=quality_to_factor(self.factor))
         noise_and_cover[0]=torch.FloatTensor(jpeg_image).to(self.device)
         return noise_and_cover

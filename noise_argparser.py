@@ -52,24 +52,26 @@ def parse_resize(resize_command):
     min_ratio = float(ratios[0])
     max_ratio = float(ratios[1])
     return Resize((min_ratio, max_ratio))
-
+# gussian blur
 def parse_gaussian(gaussian_commond):
     matches=re.match(r'gaussian\((\d+\.*\d*,\d+\.*\d*)\)',gaussian_commond)
     values=matches.groups()[0].split(',')
     kernel=values[0]
     sigma=values[1]
     return Gaussian_blur(kernel,sigma)
-
+# 
+# using jpge
 def parse_jpeg(jpeg_commond):
     matches=re.match(r'Jpeg\((\d+\.*\d*)\)',jpeg_commond)
     factor = matches.groups()[0]
+    print(f'factor is {factor}')
     return Jpeg(factor)
 
 def parse_s_and_p(S_and_P_commond):
     matches=re.match(r'sp\((\d+\.*\d*)\)',S_and_P_commond)
     ratio=matches.groups()[0]
     return Salt_and_Pepper(ratio)
-
+# gussia noise
 def parse_gaussian_nosie(Gaussian_noise_commond):
     matches=re.match(r'Gaussian_noise\((\d+\.*\d*,\d+\.*\d*)\)',Gaussian_noise_commond)
     values = matches.groups()[0].split(',')
@@ -82,11 +84,12 @@ def parse_Median_filter(Median_filter_commond):
     values=matches.groups()[0]
     return Median_filter(values)
 
+# 
 def parse_Adjust_hue(Adjust_hue_commond):
     matches=re.match(r'Adjust_hue\((\d+\.*\d*)\)',Adjust_hue_commond)
     values=matches.groups()[0]
     return Adjust_hue(values)
-
+#  调整对比度
 def parse_Adjust_contrast(Adjust_contrast_commond):
     matches=re.match(r'Adjust_contrast\((\d+\.*\d*)\)',Adjust_contrast_commond)
     values=matches.groups()[0]
@@ -139,6 +142,9 @@ class NoiseArgParser(argparse.Action):
         for command in split_commands:
             # remove all whitespace
             command = command.replace(' ', '')
+            # 比较前 n 个字符
+            # 匹配的形式是 cropout(value1, value2)
+            # valeu = 1.0
             if command[:len('cropout')] == 'cropout':
                 layers.append(parse_cropout(command))
             elif command[:len('crop')] == 'crop':
@@ -171,5 +177,6 @@ class NoiseArgParser(argparse.Action):
                 # We are adding one Identity() layer in Noiser anyway
                 pass
             else:
+                # if string is wrong , print this message 
                 raise ValueError('Command not recognized: \n{}'.format(command))
         setattr(namespace, self.dest, layers)

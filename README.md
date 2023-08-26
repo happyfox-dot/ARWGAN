@@ -15,7 +15,7 @@ Environmental requirements:
 ## Test
 Put the pre-trained model into pretrain floder, and you can test ARWGAN by command line as following.
 
-      python test.py -o ./pretrain/options-and-config.pickle -c ./pretrain/ARWGAN.pyt -s data-dir -n noise
+      python test.py -o ./pretrain/options-and-config.pickle -c ./pretrain/checkpoints/ARWGAN.pyt -s/mnt/chengxin/Datasets/DUTS/DUTS-TE/Std-Image-30/ -n 'Jpeg(10.0)'
 
 ## Citation
 ```bib

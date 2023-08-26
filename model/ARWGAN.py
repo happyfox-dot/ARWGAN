@@ -160,13 +160,13 @@ class ARWGAN:
             'loss           ': g_loss.item(),
             'encoder_mse    ': g_loss_enc.item(),
             'dec_mse        ': g_loss_dec.item(),
-            'bitwise-error  ': bitwise_avg_err,
+            'bitwise-error': bitwise_avg_err,
             'adversarial_bce': g_loss_adv.item(),
             'discr_cover_bce': d_loss_on_cover.item(),
             'discr_encod_bce': d_loss_on_encoded.item(),
             'encoded_ssim   ': g_loss_enc_ssim.item(),
-            'PSNR           ': 10 * torch.log10(4 / g_loss_enc).item(),
-            'ssim           ': 1 - g_loss_enc_ssim
+            'PSNR': 10 * torch.log10(4 / g_loss_enc).item(),
+            'ssim': 1 - g_loss_enc_ssim
         }
         return losses, (encoded_images, noised_images, decoded_messages)
 

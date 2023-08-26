@@ -113,6 +113,7 @@ def load_options(options_file_name) -> (TrainingOptions, HiDDenConfiguration, di
     with open(os.path.join(options_file_name), 'rb') as f:
         train_options = pickle.load(f)
         noise_config = pickle.load(f)
+        
         net_config = pickle.load(f)
         # for backward-capability. Some models were trained and saved before .enable_fp16 was added
         if not hasattr(net_config, 'enable_fp16'):
