@@ -4,6 +4,7 @@ import utils
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torchvision
 
 class Gaussian_blur(nn.Module):
     def __init__(self,kernel,sigma):
@@ -11,8 +12,11 @@ class Gaussian_blur(nn.Module):
         self.kernel=int(kernel)
         self.sigma=float(sigma)
         self.device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-
-
+        # self.trans =torchvision.transforms.GaussianBlur(kernel_size= self.kernel,sigma= self.sigma)
+    # def forward(self, noised_and_cover):
+    #     noised_and_cover[0] = self.trans(noised_and_cover[0])
+    #     return (noised_and_cover)
+        
     def forward(self, noised_and_cover):
         # get the gaussian filter
         encode_image=noised_and_cover[0]

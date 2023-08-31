@@ -103,6 +103,7 @@ def main():
     psnr_mean = []
     ssim_mean = []
     bar_mean = []
+    # file = open('message.txt', 'aw')
     with trange(len(source_images)) as t:
         for i, source_image in zip(t,source_images):
             # hidden_net = ARWGAN(net_config, device, noiser, None)
@@ -126,6 +127,8 @@ def main():
 
             # break
             # calcule metrics 
+            # print(encoded_images.shape)
+            # break
             psnr_value = PSNR(encoded_images, image_tensor)
             ssim_value = SSIM(encoded_images, image_tensor)
             
@@ -153,10 +156,10 @@ def main():
             # print('error : {:.3f}'.format(np.mean(np.abs(decoded_rounded - message_detached))))
             write.add_scalar('metrics/bar', np.mean(np.abs(decoded_rounded - message_detached)),i)
             # write.add_scalar('metrics/error', bar(message, decoded_messages),i)
-        # utils.save_images(image_tensor.cpu(), encoded_images.cpu(), 'test', '.', resize_to=(128, 128))
+            # utils.save_images(image_tensor.cpu(), encoded_images.cpu(), source_image, 'test_image', resize_to=(128, 128))
         # print(psnr_mean)
-        print(f'psnr mean :{np.mean(psnr_mean)}')
-        print(f'ssim mean :{np.mean(ssim_mean)}')
-        print(f'bar mean :{(1- np.mean(bar_mean)):.4f}')
+    print(f'psnr mean :{np.mean(psnr_mean)}')
+    print(f'ssim mean :{np.mean(ssim_mean)}')
+    print(f'bar mean :{(1- np.mean(bar_mean)):.5f}')
 if __name__ == '__main__':
     main()

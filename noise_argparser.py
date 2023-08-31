@@ -13,8 +13,10 @@ from noise_layers.salt_and_pepper import Salt_and_Pepper
 from noise_layers.Gaussian_noise import Gaussian_Noise
 from noise_layers.Median_filter import Median_filter
 # adjust hue
-from noise_layers.Adjust_hue import Adjust_hue
-from noise_layers.Adjust_contrast import Adjust_contrast
+from noise_layers.Adjust_hue import random_hue
+from noise_layers.Adjust_contrast import random_constrast
+from noise_layers.Brightness import random_br
+from noise_layers.Saturation import random_sat
 from noise_layers.grid_crop import grid_crop
 
 
@@ -51,7 +53,7 @@ def parse_resize(resize_command):
     ratios = matches.groups()[0].split(',')
     min_ratio = float(ratios[0])
     max_ratio = float(ratios[1])
-    return Resize((min_ratio, max_ratio))
+    return Resize(resize_ratio_range = (min_ratio, max_ratio))
 # gussian blur
 def parse_gaussian(gaussian_commond):
     matches=re.match(r'gaussian\((\d+\.*\d*,\d+\.*\d*)\)',gaussian_commond)
@@ -84,17 +86,39 @@ def parse_Median_filter(Median_filter_commond):
     values=matches.groups()[0]
     return Median_filter(values)
 
-# 
+# ##############################
+####### add experiment 
 def parse_Adjust_hue(Adjust_hue_commond):
-    matches=re.match(r'Adjust_hue\((\d+\.*\d*)\)',Adjust_hue_commond)
-    values=matches.groups()[0]
-    return Adjust_hue(values)
+    matches=re.match(r'random_hue\((\-\d+\.*\d*,\d+\.*\d*)\)',Adjust_hue_commond)
+    values = matches.groups()[0].split(',')
+    a =values[0]
+    b  = values[1]
+    return random_hue(a,b)
 #  调整对比度
 def parse_Adjust_contrast(Adjust_contrast_commond):
-    matches=re.match(r'Adjust_contrast\((\d+\.*\d*)\)',Adjust_contrast_commond)
-    values=matches.groups()[0]
-    return Adjust_contrast(values)
+    matches=re.match(r'random_constr\((\d+\.*\d*,\d+\.*\d*)\)',Adjust_contrast_commond)
+    values = matches.groups()[0].split(',')
+    a =values[0]
+    b  = values[1]
+    return random_constrast(a,b)
 
+def parse_random_brightness(Adjust_contrast_commond):
+   
+    matches=re.match(r'random_bri\((\d+\.*\d*,\d+\.*\d*)\)',Adjust_contrast_commond)
+    values = matches.groups()[0].split(',')
+    a =values[0]
+    b  = values[1]
+   
+    return random_br(a,b)
+
+def parse_random_saturation(Adjust_contrast_commond):
+    matches=re.match(r'random_sat\((\d+\.*\d*,\d+\.*\d*)\)',Adjust_contrast_commond)
+    values = matches.groups()[0].split(',')
+    a =values[0]
+    b  = values[1]
+    return random_sat(a,b)
+
+#########################################
 def parse_grid_crop(grid_crop_commond):
     matches=re.match(r'grid_crop\((\d+\.*\d*)\)',grid_crop_commond)
     values=matches.groups()[0]
@@ -167,10 +191,14 @@ class NoiseArgParser(argparse.Action):
                 layers.append(parse_gaussian_nosie(command))
             elif command[:len('Median_filter')]=='Median_filter':
                 layers.append(parse_Median_filter(command))
-            elif command[:len('Adjust_hue')]=='Adjust_hue':
+            elif command[:len('random_hue')]=='random_hue':
                 layers.append(parse_Adjust_hue(command))
-            elif command[:len('Adjust_contrast')]=='Adjust_contrast':
+            elif command[:len('random_constr')]=='random_constr':
                 layers.append(parse_Adjust_contrast(command))
+            elif command[:len('random_bri')] == 'random_bri':
+                layers.append(parse_random_brightness(command))
+            elif command[:len('random_sat')] =='random_sat':
+                layers.append(parse_random_saturation(command))
             elif command[:len('grid_crop')]=='grid_crop':
                 layers.append(parse_grid_crop(command))
             elif command[:len('identity')] == 'identity':

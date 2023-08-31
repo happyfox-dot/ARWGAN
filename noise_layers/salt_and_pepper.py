@@ -19,3 +19,23 @@ class Salt_and_Pepper(nn.Module):
         noise_and_cover[0]=encoded_image
         return noise_and_cover
 
+
+
+# import numpy as np
+# import torch
+# import torch.nn as nn
+
+
+# class Salt_and_Pepper(nn.Module):
+#     def __init__(self, ratio: float):
+#         super().__init__()
+#         self.ratio = ratio
+
+#     def forward(self, image: torch.Tensor):
+#         batch_size, channels, height, width = image.shape
+#         mask = np.random.choice([0, 1, 2], size=(batch_size, 1, height, width),
+#                                 p=[self.ratio, self.ratio, (1-2*self.ratio)])
+#         mask = torch.from_numpy(mask).to(image.device).repeat(1, channels, 1, 1)
+#         image[mask == 0] = 0.
+#         image[mask == 1] = 1.
+#         return image

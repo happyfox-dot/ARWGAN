@@ -42,15 +42,15 @@ class Noiser(nn.Module):
         ## TODO:
         # for single noisy 
         # return the last operation , it's customer
-        #return self.noise_layers[-1](encoded_and_cover)
+        return self.noise_layers[-1](encoded_and_cover)
     
         # return random_noise_layer(encoded_and_cover)
         # TODO:
         # combine nosiy ,random chose one noisy
         
-        random_noise_layer= np.random.choice(self.noise_layers, 1)[0]
-        print(f'random_noise_layer:{random_noise_layer}')
-        return random_noise_layer(encoded_and_cover)
+        # random_noise_layer= np.random.choice(self.noise_layers, 1)[0]
+        # print(f'random_noise_layer:{random_noise_layer}')
+        # return random_noise_layer(encoded_and_cover)
 
 
 

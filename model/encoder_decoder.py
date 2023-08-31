@@ -26,7 +26,7 @@ class EncoderDecoder(nn.Module):
     def forward(self,batch):
         image, message=batch
         encoded_image= self.encoder(image, message)
-        print(f'encoder_decoder: noisy layer: {self.noiser}')
+        # print(f'encoder_decoder: noisy layer: {self.noiser}')
         noised_and_cover = self.noiser([encoded_image, image])
         noised_image= noised_and_cover[0]
 

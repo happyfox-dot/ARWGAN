@@ -7,7 +7,7 @@ import csv
 import time
 import pickle
 import logging
-
+from PIL import Image 
 import torch
 from torch.nn.functional import conv2d
 from torchvision import datasets, transforms
@@ -44,22 +44,34 @@ def tensor_to_image(tensor):
     image = (image + 1) * 127.5
     return np.clip(image, 0, 255).astype(np.uint8)
 
+def save_images(original_images, watermarked_images, image_name, folder , resize_to = None):
+    watermarked_images = watermarked_images.cpu()
+    filename  = os.path.join(folder, image_name)
+    grid = torchvision.utils.make_grid(watermarked_images)
+    # Add 0.5 after unnormalizing to [0, 255] to round to nearest integer
+    ndarr = grid.mul(255).add_(0.5).clamp_(0, 255).permute(1, 2, 0).to("cpu", torch.uint8).numpy()
+    im = Image.fromarray(ndarr)
+    im.save(filename, quality = 100)
+    # torchvision.utils.save_image(watermarked_images, filename )
+    ##  TOOD:
 
-def save_images(original_images, watermarked_images, epoch, folder, resize_to=None):
-    images = original_images[:original_images.shape[0], :, :, :].cpu()
-    watermarked_images = watermarked_images[:watermarked_images.shape[0], :, :, :].cpu()
 
-    # scale values to range [0, 1] from original range of [-1, 1]
-    images = (images + 1) / 2
-    watermarked_images = (watermarked_images + 1) / 2
+# def save_images(original_images, watermarked_images, image_name, folder, resize_to=None):
+#     images = original_images[:original_images.shape[0], :, :, :].cpu()
+#     watermarked_images = watermarked_images[:watermarked_images.shape[0], :, :, :].cpu()
 
-    if resize_to is not None:
-        images = F.interpolate(images, size=resize_to)
-        watermarked_images = F.interpolate(watermarked_images, size=resize_to)
+#     # scale values to range [0, 1] from original range of [-1, 1]
+#     images = (images + 1) / 2
+#     watermarked_images = (watermarked_images + 1) / 2
 
-    stacked_images = torch.cat([images, watermarked_images], dim=0)
-    filename = os.path.join(folder, 'epoch-{}.png'.format(epoch))
-    torchvision.utils.save_image(stacked_images, filename, original_images.shape[0], normalize=False)
+#     if resize_to is not None:
+#         images = F.interpolate(images, size=resize_to)
+#         watermarked_images = F.interpolate(watermarked_images, size=resize_to)
+
+#     stacked_images = torch.cat([images, watermarked_images], dim=0)
+#     filename = os.path.join(folder, image_name)
+#     # torchvision.utils.save_image(stacked_images, filename, original_images.shape[0], normalize=False)
+#     torchvision.utils.save_image(stacked_images,filename )
 def sorted_nicely(l):
     """ Sort the given iterable in the way that humans expect."""
     convert = lambda text: int(text) if text.isdigit() else text

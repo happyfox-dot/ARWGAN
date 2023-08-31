@@ -1,4 +1,5 @@
 import torch.nn as nn
+import torchvision 
 import torch.nn.functional as F
 import numpy as np
 from noise_layers.crop import random_float
@@ -12,7 +13,7 @@ class Resize(nn.Module):
         self.resize_ratio_min = resize_ratio_range[0]
         self.resize_ratio_max = resize_ratio_range[1]
         self.interpolation_method = interpolation_method
-
+        self.trans = torchvision.transforms.Resize(128)
 
     def forward(self, noised_and_cover):
 
@@ -22,5 +23,7 @@ class Resize(nn.Module):
                                     noised_image,
                                     scale_factor=(resize_ratio, resize_ratio),
                                     mode=self.interpolation_method)
-
+        
+        # resize the  128 * 128 size back
+        noised_and_cover[0] = self.trans(noised_and_cover[0])
         return noised_and_cover
