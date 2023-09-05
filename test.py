@@ -1,3 +1,4 @@
+import random
 import torch.nn
 import argparse
 import os
@@ -66,7 +67,12 @@ def yuv_psnr(img):
 
 def main():
     # set cuda:0 is visiable 
-    os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+    torch.manual_seed(42)
+    torch.cuda.manual_seed_all(42)
+    np.random.seed(42)
+    random.seed(42)
+
+    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
     if torch.cuda.is_available():
         device = torch.device('cuda')
     else:
@@ -95,7 +101,10 @@ def main():
     checkpoint = torch.load(args.checkpoint_file)
     # info
     hidden_net = ARWGAN(net_config, device, noiser, None)
+     
     utils.model_from_checkpoint(hidden_net, checkpoint)
+    # start to eval
+    # hidden_net.eval()
     # get using file 
     source_images = os.listdir(args.source_images)
     source_images  = sorted(source_images)
@@ -132,11 +141,11 @@ def main():
             psnr_value = PSNR(encoded_images, image_tensor)
             ssim_value = SSIM(encoded_images, image_tensor)
             
-            write.add_scalars('Losses/losses',losses,i)
+            # write.add_scalars('Losses/losses',losses,i)
 
-            write.add_scalar('losses/psnr',losses['PSNR'],i)
-            write.add_scalar('losses/ssim',losses['ssim'],i)
-            write.add_scalar('losses/bitwise-error',losses['bitwise-error'],i)
+            # write.add_scalar('losses/psnr',losses['PSNR'],i)
+            # write.add_scalar('losses/ssim',losses['ssim'],i)
+            # write.add_scalar('losses/bitwise-error',losses['bitwise-error'],i)
             psnr_mean.append(psnr_value)
             ssim_mean.append(ssim_value)
             
@@ -154,7 +163,7 @@ def main():
             # break
             
             # print('error : {:.3f}'.format(np.mean(np.abs(decoded_rounded - message_detached))))
-            write.add_scalar('metrics/bar', np.mean(np.abs(decoded_rounded - message_detached)),i)
+            # write.add_scalar('metrics/bar', np.mean(np.abs(decoded_rounded - message_detached)),i)
             # write.add_scalar('metrics/error', bar(message, decoded_messages),i)
             # utils.save_images(image_tensor.cpu(), encoded_images.cpu(), source_image, 'test_image', resize_to=(128, 128))
         # print(psnr_mean)

@@ -46,11 +46,11 @@ class ARWGAN:
         if tb_logger is not None:
             from tensorboard_logger import TensorBoardLogger
             encoder_final = self.encoder_decoder.encoder._modules['final_layer']
-            encoder_final.register_backward_hook(tb_logger.grad_hook_by_name('grads/encoder_out'))
+            encoder_final.register_full_backward_hook(tb_logger.grad_hook_by_name('grads/encoder_out'))
             decoder_final = self.encoder_decoder.decoder._modules['linear']
-            decoder_final.register_backward_hook(tb_logger.grad_hook_by_name('grads/decoder_out'))
+            decoder_final.register_full_backward_hook(tb_logger.grad_hook_by_name('grads/decoder_out'))
             discrim_final = self.discriminator._modules['linear']
-            discrim_final.register_backward_hook(tb_logger.grad_hook_by_name('grads/discrim_out'))
+            discrim_final.register_full_backward_hook(tb_logger.grad_hook_by_name('grads/discrim_out'))
 
     def train_on_batch(self, batch: list):
 
@@ -160,13 +160,13 @@ class ARWGAN:
             'loss           ': g_loss.item(),
             'encoder_mse    ': g_loss_enc.item(),
             'dec_mse        ': g_loss_dec.item(),
-            'bitwise-error': bitwise_avg_err,
+            'bitwise-error  ': bitwise_avg_err,
             'adversarial_bce': g_loss_adv.item(),
             'discr_cover_bce': d_loss_on_cover.item(),
             'discr_encod_bce': d_loss_on_encoded.item(),
             'encoded_ssim   ': g_loss_enc_ssim.item(),
-            'PSNR': 10 * torch.log10(4 / g_loss_enc).item(),
-            'ssim': 1 - g_loss_enc_ssim
+            'PSNR           ': 10 * torch.log10(4 / g_loss_enc).item(),
+            'ssim           ': 1 - g_loss_enc_ssim
         }
         return losses, (encoded_images, noised_images, decoded_messages)
 

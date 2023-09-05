@@ -1,0 +1,7 @@
+factor is 10
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]

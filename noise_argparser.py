@@ -18,7 +18,7 @@ from noise_layers.Adjust_contrast import random_constrast
 from noise_layers.Brightness import random_br
 from noise_layers.Saturation import random_sat
 from noise_layers.grid_crop import grid_crop
-
+from noise_layers.random_rst import RandomRST
 
 def parse_pair(match_groups):
     heights = match_groups[0].split(',')
@@ -118,6 +118,10 @@ def parse_random_saturation(Adjust_contrast_commond):
     b  = values[1]
     return random_sat(a,b)
 
+# add random rst_noise to train
+def parse_rst():
+    return RandomRST()
+
 #########################################
 def parse_grid_crop(grid_crop_commond):
     matches=re.match(r'grid_crop\((\d+\.*\d*)\)',grid_crop_commond)
@@ -201,6 +205,8 @@ class NoiseArgParser(argparse.Action):
                 layers.append(parse_random_saturation(command))
             elif command[:len('grid_crop')]=='grid_crop':
                 layers.append(parse_grid_crop(command))
+            elif command[:len('rst')] == 'rst':
+                layers.append(parse_rst())
             elif command[:len('identity')] == 'identity':
                 # We are adding one Identity() layer in Noiser anyway
                 pass

@@ -1,0 +1,85 @@
+Median_blur, kernel
+[Median_filter(
+  (aug): RandomMedianBlur(p=0.5, p_batch=1.0, same_on_batch=False, kernel_size=(5, 5))
+)]
+noise_layers : [Median_filter(
+  (aug): RandomMedianBlur(p=0.5, p_batch=1.0, same_on_batch=False, kernel_size=(5, 5))
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Median_filter(
+  (aug): RandomMedianBlur(p=0.5, p_batch=1.0, same_on_batch=False, kernel_size=(5, 5))
+)]
+psnr mean :35.32497024536133
+ssim mean :0.9673416018486023
+bar mean :0.85203
+salt_and_pepper
+[Salt_and_Pepper()]
+noise_layers : [Salt_and_Pepper()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Salt_and_Pepper()]
+psnr mean :11.317152976989746
+ssim mean :0.13571970164775848
+bar mean :0.52830
+brightness
+<class 'str'> <class 'str'>
+[random_br(
+  (aug): RandomBrightness(brightness_factor=tensor([0.8000, 1.2000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+noise_layers : [random_br(
+  (aug): RandomBrightness(brightness_factor=tensor([0.8000, 1.2000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[random_br(
+  (aug): RandomBrightness(brightness_factor=tensor([0.8000, 1.2000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+psnr mean :35.32497024536133
+ssim mean :0.9673416018486023
+bar mean :0.75072
+contrast
+[random_constrast(
+  (aug): RandomContrast(contrast_factor=tensor([0.8000, 1.2000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+noise_layers : [random_constrast(
+  (aug): RandomContrast(contrast_factor=tensor([0.8000, 1.2000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[random_constrast(
+  (aug): RandomContrast(contrast_factor=tensor([0.8000, 1.2000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+psnr mean :35.32497024536133
+ssim mean :0.9673416018486023
+bar mean :0.74953
+saturation
+[random_sat(
+  (aug): RandomSaturation(saturation_factor=tensor([0.8000, 1.2000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+noise_layers : [random_sat(
+  (aug): RandomSaturation(saturation_factor=tensor([0.8000, 1.2000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[random_sat(
+  (aug): RandomSaturation(saturation_factor=tensor([0.8000, 1.2000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+psnr mean :35.32497024536133
+ssim mean :0.9673416018486023
+bar mean :0.75696
+hue
+[random_hue(
+  (trans): RandomHue(hue_factor=tensor([-0.1000,  0.1000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+noise_layers : [random_hue(
+  (trans): RandomHue(hue_factor=tensor([-0.1000,  0.1000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[random_hue(
+  (trans): RandomHue(hue_factor=tensor([-0.1000,  0.1000]), p=1.0, p_batch=1.0, same_on_batch=False)
+)]
+psnr mean :35.32497024536133
+ssim mean :0.9673416018486023
+bar mean :0.86057

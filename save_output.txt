@@ -1,0 +1,256 @@
+jpege, factor = 10
+factor is 10.0
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.54090
+jpege, factor = 30
+factor is 30.0
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.66272
+jpege, factor = 50
+factor is 50.0
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.75487
+jpege, factor = 70
+factor is 70.0
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.84814
+jpege, factor = 90
+factor is 90.0
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.96280
+gaussain blur , kernel = 7
+sigma = 0.1
+[Gaussian_blur()]
+noise_layers : [Gaussian_blur()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_blur()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.99238
+ssigma = 0.5
+[Gaussian_blur()]
+noise_layers : [Gaussian_blur()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_blur()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.99240
+sigma= 1.0
+[Gaussian_blur()]
+noise_layers : [Gaussian_blur()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_blur()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.99096
+sigma= 1.5
+[Gaussian_blur()]
+noise_layers : [Gaussian_blur()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_blur()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.97485
+sigma = 2.0
+[Gaussian_blur()]
+noise_layers : [Gaussian_blur()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_blur()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.91934
+sigma = 2.5
+[Gaussian_blur()]
+noise_layers : [Gaussian_blur()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_blur()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.84274
+sigma = 3.0
+[Gaussian_blur()]
+noise_layers : [Gaussian_blur()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_blur()]
+psnr mean :39.465885162353516
+ssim mean :0.9836530685424805
+bar mean :0.78990
+gaussain noisy , sigma = [0.01,0.02 , 0.03, 0.04,0.05]
+sigma = 0.01
+[Gaussian_Noise()]
+noise_layers : [Gaussian_Noise()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_Noise()]
+psnr mean :37.50188064575195
+ssim mean :0.9675759673118591
+bar mean :0.96914
+ssigma = 0.02
+[Gaussian_Noise()]
+noise_layers : [Gaussian_Noise()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_Noise()]
+psnr mean :34.30420684814453
+ssim mean :0.9274168610572815
+bar mean :0.89332
+sigma= 0.03
+[Gaussian_Noise()]
+noise_layers : [Gaussian_Noise()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_Noise()]
+psnr mean :31.609237670898438
+ssim mean :0.8776552081108093
+bar mean :0.82618
+sigma= 0.04
+[Gaussian_Noise()]
+noise_layers : [Gaussian_Noise()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_Noise()]
+psnr mean :29.443424224853516
+ssim mean :0.8265081644058228
+bar mean :0.77551
+sigma = 0.05
+[Gaussian_Noise()]
+noise_layers : [Gaussian_Noise()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_Noise()]
+psnr mean :27.66754150390625
+ssim mean :0.7774277329444885
+bar mean :0.73720
+rescale ,factor =[0.5, 0.75,1., 1.25, 1.5, 2.0]
+factor = 0.5
+[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+noise_layers : [Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+psnr mean :39.47075653076172
+ssim mean :0.983670711517334
+bar mean :0.97513
+factor = 0.75
+[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+noise_layers : [Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+psnr mean :39.47075653076172
+ssim mean :0.983670711517334
+bar mean :0.99021
+factor = 1.
+[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+noise_layers : [Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+psnr mean :39.47075653076172
+ssim mean :0.983670711517334
+bar mean :0.99190
+factor = 1.25
+[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+noise_layers : [Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+psnr mean :39.47075653076172
+ssim mean :0.983670711517334
+bar mean :0.99140
+factor= 1.5 
+[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+noise_layers : [Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+psnr mean :39.47075653076172
+ssim mean :0.983670711517334
+bar mean :0.99176
+factor= 2.0
+[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+noise_layers : [Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Resize(
+  (trans): Resize(size=128, interpolation=bilinear, max_size=None, antialias=None)
+)]
+psnr mean :39.47075653076172
+ssim mean :0.983670711517334
+bar mean :0.99190

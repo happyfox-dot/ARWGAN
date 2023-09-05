@@ -14,6 +14,9 @@ from noise_argparser import NoiseArgParser
 
 from train import train
 
+#TODO：
+## random_rst, jpeg(50.0), guassian_blur(kernel_size = 7 , (sigma = 2.0 )), guassian_noisy(0.05), 
+# 300
 
 def main():
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
@@ -21,11 +24,13 @@ def main():
 
     parent_parser = argparse.ArgumentParser(description='Training of ARWGAN nets')
     subparsers = parent_parser.add_subparsers(dest='command', help='Sub-parser for commands')
+    # for do new verison
     new_run_parser = subparsers.add_parser('new', help='starts a new run')
+    
     new_run_parser.add_argument('--data-dir', '-d', required=True, type=str,
                                 help='The directory where the data is stored.')
     new_run_parser.add_argument('--batch-size', '-b', required=True, type=int, help='The batch size.')
-    new_run_parser.add_argument('--epochs', '-e', default=100, type=int, help='Number of epochs to run the simulation.')
+    new_run_parser.add_argument('--epochs', '-e', default=300, type=int, help='Number of epochs to run the simulation.')
     new_run_parser.add_argument('--name', required=True, type=str, help='The name of the experiment.')
 
     new_run_parser.add_argument('--size', '-s', default=128, type=int,

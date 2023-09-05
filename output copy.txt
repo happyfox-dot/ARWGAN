@@ -1,0 +1,60 @@
+jpege, factor = 10
+factor is 10.0
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]
+psnr mean :39.474037170410156
+ssim mean :0.9836652278900146
+bar mean :0.53926
+jpege, factor = 30
+factor is 30.0
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]
+psnr mean :39.47371292114258
+ssim mean :0.9836974143981934
+bar mean :0.66180
+jpege, factor = 50
+factor is 50.0
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]
+psnr mean :39.483089447021484
+ssim mean :0.9836881160736084
+bar mean :0.75253
+jpege, factor = 70
+factor is 70.0
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]
+psnr mean :39.47762680053711
+ssim mean :0.9836359620094299
+bar mean :0.84878
+jpege, factor = 90
+factor is 90.0
+
+[Jpeg()]
+noise_layers : [Jpeg()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Jpeg()]
+gaussain blur , kernel = 7
+sigma = 0.1
+[Gaussian_blur()]
+noise_layers : [Gaussian_blur()]
+self.noise_layers :[]
+<class 'noise_layers.identity.Identity'>
+after for cicyle , self.noise_layer[Gaussian_blur()]
+ssigma = 0.5
